@@ -1,2 +1,2 @@
 #!/bin/bash
-tr A,c Z,e 2> /dev/null
+tr A,c Z,e
