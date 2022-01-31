@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f3 -d$'\n' iacta
+head -3 ./iacta | tail -1
