@@ -4,11 +4,11 @@
 count=1
 while [ $count -le 10 ]
 do
-	if [ $count -ne 9 ];
+	if [ $count -eq 9 ];
 	then
-		echo "Best School"
-	else
 		echo "Hi"
+	else
+		echo "Best School"
 	fi
-  count=$((count + 1))
+	count=$((count + 1))
 done
