@@ -2,7 +2,7 @@
 # This script is displaying "Best School" 10 times using while and if
 
 count=1
-while [ $count -le 10 ]
+while [ $count -le 10 ] && [ $count -gt 0 ]
 do
 	if [ $count -eq 9 ];
 	then
