@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Lets parse apache logs
-wget https://intranet.hbtn.io/rltoken/Kq-2GaPoUSwJfOGBBWH61Q
+
 awk '{print $1, $9}' ./apache-access.log
