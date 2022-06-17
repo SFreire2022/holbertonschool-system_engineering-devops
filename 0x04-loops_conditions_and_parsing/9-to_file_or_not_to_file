@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Display every minute and hour from 00:01 to 12:59
+# Display info about school file
 
 
 if [ -e "./school" ]
