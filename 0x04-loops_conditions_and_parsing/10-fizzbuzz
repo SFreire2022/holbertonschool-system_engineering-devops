@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 # Fizz Buzz in bash
 
+list=()
+
 for number in {1..100}
 do
 	if [[ $(($number%3)) == 0 ]] && [[ $(($number%5)) == 0 ]]
 	then
-		echo "FizzBuzz"
+		list=("${list[@]}" "FizzBuzz")
 	elif [ $(($number%3)) == 0 ]
 	then
-		echo "Fizz"
+		list=("${list[@]}" "Fizz")
 	elif [ $(($number%5)) == 0 ]
 	then
-		echo "Buzz"
+		list=("${list[@]}" "Buzz")
 	else
-		echo "$number"
+		list=("${list[@]}" "$number")
 	fi
+done
+
+for value in "${list[@]}"
+do
+     echo $value
 done
