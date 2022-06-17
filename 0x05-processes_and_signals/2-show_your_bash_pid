@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script is displaying all child processes of its bash in a tree format and in a more human readable format
+# shellcheck disable=SC2009
+
+ps auxf | grep "bash"
