@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# TBash script that stops 4-to_infinity_and_beyond process not using kill.
+
+pkill -15 -f 4-to_infinity_and_beyond
