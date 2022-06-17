@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Display every minute and hour from 00:01 to 12:59
+# Display every file in PWD cutting the name til first "-"
 
 pwd_files=$(ls)
 for arch in $pwd_files

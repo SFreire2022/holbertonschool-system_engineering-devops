@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Display every minute and hour from 00:01 to 12:59
+
+
+if [ -e "./school" ]
+then
+	echo "school file exists"
+	if [ ! -s "./school" ]
+	then
+		echo "school file is empty"
+	fi
+	if [ -s "./school" ]
+	then
+		echo "school file is not empty"
+	fi
+    if [ -f "./school" ]
+	then
+		echo "school is a regular file"
+	fi
+else
+	echo "school file does not exist"
+fi
