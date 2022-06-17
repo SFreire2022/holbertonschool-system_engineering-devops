@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script is displaying all processes in a tree format and human readable format
+
+ps auxf
