@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # TBash script that stops 4-to_infinity_and_beyond process using kill.
 
-kill -15 "`pidof 4-to_infinity_and_beyond`"
+kill -15 "$(pgrep 4-to_infinity_and_beyond)"
