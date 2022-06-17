@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Show info about users
+
+while IFS=: read -r U P U_ID G_ID U_ID_INF H_DIR COM_SH
+do
+	echo "The user $U is part of the $G_ID gang, lives in $H_DIR and rides $COM_SH. $U_ID's place is protected by the passcode $P, more info about the user here: $U_ID_INF"
+done < /etc/passwd
