@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script will be converten in a daemon or a process.
+
+while true
+do
+	echo "I am alive!" >> /tmp/my_process
+	sleep 2
+done
