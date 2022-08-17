@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script to fix the Empty reply from server starting apache after installation
+sudo service apache2 start
