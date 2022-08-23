@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains a custom header.
+
+apt update
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.0 -y
+apt update
+apt-get -y install haproxy=2.0.\*
+
+conf_file="/etc/haproxy/haproxy.cfg"
+
+fname="frontend http"
+fbind="bind *:80"
+fmode="mode http"
+fdefault="default_backend web-backend"
+frontend="$fname\n\t$fbind\n\t$fmode\n\t$fdefault\n"
+
+bname="backend web-backend"
+bbalance="balance roundrobin"
+bserver1="server web1 3.91.220.140:80 check"
+bserver2="server web2 54.221.177.99:80 check"
+backend="$bname\n\t$bbalance\n\t$bserver1\n\t$bserver2"
+
+sed -i "$ a $frontend" $conf_file
+sed -i "$ a $backend" $conf_file
+
+service haproxy restart
