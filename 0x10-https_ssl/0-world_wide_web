@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #Shell script that check input, dig the domains - subdomains and prit to the required format
 
 my_function () {
