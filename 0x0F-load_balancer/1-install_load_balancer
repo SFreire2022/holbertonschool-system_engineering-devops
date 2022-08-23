@@ -17,8 +17,8 @@ frontend="$fname\n\t$fbind\n\t$fmode\n\t$fdefault\n"
 
 bname="backend web-backend"
 bbalance="balance roundrobin"
-bserver1="server web1 3.91.220.140:80 check"
-bserver2="server web2 54.221.177.99:80 check"
+bserver1="server 4437-web-01 3.91.220.140:80 check"
+bserver2="server 4437-web-02 54.221.177.99:80 check"
 backend="$bname\n\t$bbalance\n\t$bserver1\n\t$bserver2"
 
 sed -i "$ a $frontend" $conf_file
