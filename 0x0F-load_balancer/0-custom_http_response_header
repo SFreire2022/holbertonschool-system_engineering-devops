@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Shell script that configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
+# Nginx should be listening on port 80
+# When querying Nginx at its root / with a GET request (requesting a page) using curl, it must return a page that contains the string Hello World
+# As an answer file, write a Bash script that configures a new Ubuntu machine to respect above requirements (this script will be run on the server itself)
+# You can’t use systemctl for restarting nginx
+# Note that the checker will execute your script as the root user, you do not need to use the sudo command
+# Add redirection config to defoult config for nginx
+# Add 404 custom page
+
+my404="error_page 404 /custom_404.html;\nlocation = /custom_404.html {\nroot /var/www/html;\ninternal;\n}"
+
+apt-get -y update
+apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sed -i "/listen 80 default_server;/a $my404" /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+service nginx restart
