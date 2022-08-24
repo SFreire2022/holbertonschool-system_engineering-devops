@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#bash script to fixs hardcoded config in nginx sites-enabled dir overwriting it with a symlink to default site available
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+service nginx restart
+pkill -f 'nginx'
