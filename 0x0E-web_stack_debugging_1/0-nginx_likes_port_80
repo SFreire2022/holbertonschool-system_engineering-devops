@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#bash script to fixs hardcoded config in nginx sites-enabled dir 
+
+#Remove duplicate file and create a symlink to default site available
+rm -f /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+#Then, restart the service
+service nginx restart
