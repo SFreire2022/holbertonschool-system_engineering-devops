@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#bash script to fixs hardcoded config in nginx sites-enabled dir overwriting it with a symlink to default site available
+#bash script to fixs hardcoded config in nginx sites-enabled dir overwriting it with a symlink to default site available, using signal -1
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
 pkill -1 -f 'nginx'
