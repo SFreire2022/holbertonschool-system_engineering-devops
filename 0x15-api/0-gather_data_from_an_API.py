@@ -9,6 +9,14 @@ import sys
 url = 'https://jsonplaceholder.typicode.com/'
 
 
+def print_with_format(employee, todos, employee_todos, completed):
+    """Function to print with required format"""
+    print('Employee', employee.get('name'),
+          'is done with tasks({}/{}):'.
+          format(len(completed), len(employee_todos)))
+    [print('\t', todo.get('title')) for todo in completed]
+
+
 def get_data_from_api():
     """
     Function to get data from https://jsonplaceholder.typicode.com/
@@ -44,11 +52,8 @@ def get_data_from_api():
     """Create a list matching completed tasks for that given Employee ID"""
     completed = [todo for todo in employee_todos if todo.get('completed')]
 
-    """Print with required format"""
-    print('Employee', employee.get('name'),
-          'is done with tasks({}/{}):'.
-          format(len(completed), len(employee_todos)))
-    [print('\t', todo.get('title')) for todo in completed]
+    """print with required format"""
+    print_with_format(employee, todos, employee_todos, completed)
 
 
 if __name__ == "__main__":
