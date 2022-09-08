@@ -6,18 +6,49 @@ returns information about his/her TODO list progress.
 import requests
 import sys
 
+url = 'https://jsonplaceholder.typicode.com/'
+
 
 def get_data_from_api():
     """
     Function to get data from https://jsonplaceholder.typicode.com/
     """
-    url = 'https://jsonplaceholder.typicode.com/'
-    user = requests.get(url + 'users/{}'.format(sys.argv[1])).json()
-    todos = requests.get(url + 'todos', params={'userId': sys.argv[1]}).json()
-    completed = [t.get('title') for t in todos if t.get('completed') is True]
-    print('Employee {} is done with tasks({}/{}):'.format(
-        user.get('name'), len(completed), len(todos)))
-    [print('\t {}'.format(c)) for c in completed]
+
+    """Control input argument"""
+    if len(sys.argv) < 2:
+        return print('USAGE:', __file__, '<employee id>')
+    e_id = sys.argv[1]
+    try:
+        _e_id = int(sys.argv[1])
+    except ValueError:
+        return print('Employee id must be an integer')
+
+    """Control respose status for Employee"""
+    response = requests.get(url + 'users/' + e_id)
+    if response.status_code == 404:
+        return print('Employee id not found')
+    elif response.status_code != 200:
+        return print('Error: status_code:', response.status_code)
+    employee = response.json()
+
+    """Control respose status for todos"""
+    response = requests.get(url + 'todos/')
+    if response.status_code != 200:
+        return print('Error: status_code:', response.status_code)
+    todos = response.json()
+
+    """Create a list matching todos for that given Employee ID"""
+    employee_todos = [todo for todo in todos
+                      if todo.get('userId') == employee.get('id')]
+
+    """Create a list matching completed tasks for that given Employee ID"""
+    completed = [todo for todo in employee_todos if todo.get('completed')]
+
+    """Print with required format"""
+    print('Employee', employee.get('name'),
+          'is done with tasks({}/{}):'.
+          format(len(completed), len(employee_todos)))
+    [print('\t', todo.get('title')) for todo in completed]
 
 
 if __name__ == "__main__":
