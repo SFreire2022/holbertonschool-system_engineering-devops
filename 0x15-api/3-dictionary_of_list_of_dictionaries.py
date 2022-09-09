@@ -50,9 +50,9 @@ def get_data_from_api():
         employee_todos = [todo for todo in todos
                           if todo.get('userId') == employee.get('id')]
         employee_todos = [{'username': employee.get('username'),
-                         'task': todo.get('title'),
-                         'completed': todo.get('completed')}
-                         for todo in employee_todos]
+                           'task': todo.get('title'),
+                           'completed': todo.get('completed')}
+                          for todo in employee_todos]
         data[str(employee.get('id'))] = employee_todos
 
     """Save to JSON file with required format"""
